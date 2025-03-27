@@ -1,0 +1,12 @@
+# в будущем добавить сам сервис
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: appdatabase
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+

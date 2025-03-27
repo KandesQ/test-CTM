@@ -26,6 +26,9 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-jooq")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.mapstruct:mapstruct:1.5.3.Final")
+	implementation("org.liquibase:liquibase-core:4.24.0")
+	implementation("org.mapstruct:mapstruct-processor:1.5.3.Final")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("com.h2database:h2")
 	runtimeOnly("org.postgresql:postgresql")
