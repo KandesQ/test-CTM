@@ -1,5 +1,10 @@
 # в будущем добавить сам сервис
 
+networks:
+  shared_network:
+    driver: bridge
+
+
 services:
   postgres:
     image: postgres
@@ -9,4 +14,18 @@ services:
       POSTGRES_PASSWORD: root
     ports:
       - "5432:5432"
+    networks:
+      - shared_network
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appdatabase
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - shared_network
+    depends_on:
+      - postgres
 

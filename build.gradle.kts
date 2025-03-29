@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     java
     id("org.springframework.boot") version "3.4.4"
@@ -71,8 +73,8 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    gradlePluginPortal()
 }
 
 
@@ -105,14 +107,10 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-//tasks.named<BootJar>("bootJar") {
-//    archiveClassifier.set("boot")
-//}
-//
-//tasks.named<Jar>("jar") {
-//    archiveClassifier.set("")
-//}
-//
-//tasks.named<Jar>("jar") {
-//    enabled = false
-//}
+tasks.named<BootJar>("bootJar") {
+    archiveClassifier.set("boot")
+}
+
+tasks.named<Jar>("jar") {
+    archiveClassifier.set("")
+}

@@ -2,7 +2,12 @@ spring:
   application:
     name: test-CTM
   datasource:
-    url: jdbc:postgresql://localhost:5432/appdatabase
+#    для работы из IDEA
+#    url: jdbc:postgresql://localhost:5432/appdatabase
+
+#    для работы из контейнера
+    url: jdbc:postgresql://postgres:5432/appdatabase
+
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
