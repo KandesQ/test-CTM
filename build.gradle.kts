@@ -82,6 +82,8 @@ dependencies {
     implementation("org.jooq:jooq-codegen:3.20.2")
     implementation("org.jooq:jooq-meta:3.20.2")
 
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.mapstruct:mapstruct:1.5.3.Final")
     implementation("org.mapstruct:mapstruct-processor:1.5.3.Final")
@@ -102,3 +104,15 @@ dependencies {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+//tasks.named<BootJar>("bootJar") {
+//    archiveClassifier.set("boot")
+//}
+//
+//tasks.named<Jar>("jar") {
+//    archiveClassifier.set("")
+//}
+//
+//tasks.named<Jar>("jar") {
+//    enabled = false
+//}
