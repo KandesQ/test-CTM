@@ -77,30 +77,33 @@ repositories {
     mavenCentral()
 }
 
+object Versions {
+    const val JOOQ = "3.20.2"
+    const val POSTGRESQL = "42.7.5"
+    const val LIQUIBASE = "4.24.0"
+
+}
 
 dependencies {
 //    implementation("org.springframework.boot:spring-boot-starter-jooq")
-    implementation("org.jooq:jooq:3.20.2")
-    implementation("org.jooq:jooq-codegen:3.20.2")
-    implementation("org.jooq:jooq-meta:3.20.2")
+    implementation("org.jooq:jooq:${Versions.JOOQ}")
+    implementation("org.jooq:jooq-codegen:${Versions.JOOQ}")
+    implementation("org.jooq:jooq-meta:${Versions.JOOQ}")
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.mapstruct:mapstruct:1.5.3.Final")
-    implementation("org.mapstruct:mapstruct-processor:1.5.3.Final")
-    implementation("org.liquibase:liquibase-core:4.24.0")
+    implementation("org.liquibase:liquibase-core:${Versions.LIQUIBASE}")
 
     compileOnly("org.projectlombok:lombok")
 
-    runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")
 
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    jooqCodegen("org.postgresql:postgresql:42.7.5")
+    jooqCodegen("org.postgresql:postgresql:${Versions.POSTGRESQL}")
 }
 
 //tasks.withType<Test> {
