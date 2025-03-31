@@ -1,15 +1,18 @@
 package com.example.test_CTM.service;
 
 import com.example.test_CTM.dto.UserDto;
-import org.jooq.User;
+import com.test_CTM.jooq.generated.tables.records.TicketsRecord;
+import org.jooq.Record;
+import org.jooq.Record1;
+import org.jooq.Result;
 
 import java.util.Optional;
 
-/**
- * Формат ответа String
- */
 public interface UserService {
-    String registerUser(UserDto userDto);
 
-//    Optional<Result<Record>> getAllBoughtTickets(UserDto userDto); что то такое
+    String registerUser(UserDto userDto);
+    /**
+     * Возвращает все купленные юзером билеты
+     */
+    Result<TicketsRecord> getUserTickets(UserDto userDto);
 }
