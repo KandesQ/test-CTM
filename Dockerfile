@@ -2,7 +2,8 @@ FROM gradle:8.10.2-jdk23 as build
 WORKDIR /app
 COPY . /app
 RUN gradle clean
-RUN gradle build -x test
+RUN gradle build -x test # на этапе сборки
+# никаких подключений к базе не будет, контекст не поднимется поэтому тесты убираю
 
 FROM openjdk:23 as builder
 WORKDIR /app

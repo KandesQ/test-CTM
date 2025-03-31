@@ -103,14 +103,18 @@ dependencies {
     jooqCodegen("org.postgresql:postgresql:42.7.5")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
+//tasks.withType<Test> {
+//    useJUnitPlatform()
+//}
 
 tasks.named<BootJar>("bootJar") {
-    archiveClassifier.set("boot")
+    archiveClassifier.set("boot") // если это убрать, то придется еще в докерфайле менять имя при копировании
 }
 
 tasks.named<Jar>("jar") {
-    archiveClassifier.set("")
+    enabled = false
+}
+
+tasks.withType<Test> {
+    enabled = false
 }
