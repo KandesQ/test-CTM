@@ -19,7 +19,7 @@ public class UserDto {
 
     private String firstName;
 
-    private String MiddleName;
+    private String middleName;
 
-    private String LastName;
+    private String lastName;
 }
