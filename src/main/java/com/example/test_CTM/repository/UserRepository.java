@@ -4,6 +4,8 @@ import com.example.test_CTM.dto.UserDto;
 import org.jooq.Record;
 import org.jooq.Result;
 
+import java.util.Optional;
+
 /**
  * Методы возвращают числа - полезно будет в будущем. При дебаге
  * можно понять, если метод возвращает число но ошибка есть, значит хоть одна строка сохраняется в таблицу
@@ -16,5 +18,9 @@ public interface UserRepository {
      */
     int save(UserDto userDto);
 
+    boolean existByLogin(String login);
+
     Result<Record> getUserTickets(String login);
+
+
 }

@@ -20,22 +20,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public int save(UserDto userDto) {
-        // существует ли уже такой пользователь
-        Result<Record1<Integer>> result = dsl
-                .selectOne()
-                .from(USERS)
-                .where(USERS.LOGIN.eq(userDto.getLogin()))
-                .fetch();
-
-
-        if (result.isNotEmpty()) {
-            String message = "User with login=" +
-                    userDto.getLogin() +
-                    " already exists";
-
-            throw new RuntimeException(message);
-        }
-
         return dsl
                 .insertInto(USERS)
                 .set(USERS.LOGIN, userDto.getLogin())
@@ -44,6 +28,15 @@ public class UserRepositoryImpl implements UserRepository {
                 .set(USERS.LAST_NAME, userDto.getLastName())
                 .set(USERS.PASSWORD, userDto.getPassword())
                 .execute();
+    }
+
+    @Override
+    public boolean existByLogin(String login) {
+        return dsl
+                .fetchExists(dsl
+                        .selectOne()
+                        .from(USERS)
+                        .where(USERS.LOGIN.eq(login)));
     }
 
     @Override
