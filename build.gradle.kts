@@ -81,14 +81,15 @@ object Versions {
     const val JOOQ = "3.20.2"
     const val POSTGRESQL = "42.7.5"
     const val LIQUIBASE = "4.24.0"
-
+    const val OPENAPI = "2.8.5"
 }
 
 dependencies {
-//    implementation("org.springframework.boot:spring-boot-starter-jooq")
     implementation("org.jooq:jooq:${Versions.JOOQ}")
     implementation("org.jooq:jooq-codegen:${Versions.JOOQ}")
     implementation("org.jooq:jooq-meta:${Versions.JOOQ}")
+
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${Versions.OPENAPI}")
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
 

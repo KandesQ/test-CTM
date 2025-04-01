@@ -7,9 +7,13 @@ import java.time.LocalDateTime;
 
 @Data
 public class TicketDto {
+
     private LocalDateTime departureAt;
+
     private LocalDateTime arriveAt;
+
     private int seat;
+
     private double price;
 
 
