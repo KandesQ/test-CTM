@@ -2,17 +2,17 @@ spring:
   application:
     name: test-CTM
   datasource:
-    #    для работы из IDEA
-    url: jdbc:postgresql://localhost:5432/appdatabase
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
+#        для работы из контейнера
+    url: jdbc:postgresql://postgres:5432/appdatabase
   jooq:
     sql-dialect: postgres
   liquibase:
     change-log: classpath:db/liquibase/changelogs/master-changelog.yml
-    ## для работы из IDEA
-    url: jdbc:postgresql://localhost:5432/appdatabase
     user: postgres
     password: root
     driver-class-name: org.postgresql.Driver
+    # для работы из контейнера
+    url: jdbc:postgresql://postgres:5432/appdatabase
