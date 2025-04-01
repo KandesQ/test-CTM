@@ -129,8 +129,8 @@ public class TicketsRecord extends UpdatableRecordImpl<TicketsRecord> {
     /**
      * Getter for <code>public.tickets.price</code>.
      */
-    public BigDecimal getPrice() {
-        return (BigDecimal) get(7);
+    public double getPrice() {
+        return (double) get(7);
     }
 
     // -------------------------------------------------------------------------
