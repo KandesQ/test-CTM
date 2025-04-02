@@ -1,5 +1,6 @@
 package com.example.test_CTM.repository;
 
+import com.example.test_CTM.dto.TicketDto;
 import com.test_CTM.jooq.generated.tables.records.TicketsRecord;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
@@ -17,4 +18,6 @@ public interface TicketRepository {
      * @return страница билетов
      */
     Result<TicketsRecord> getTickets(int page, int pageSize);
+
+    TicketsRecord getTicket(TicketDto ticketDto);
 }

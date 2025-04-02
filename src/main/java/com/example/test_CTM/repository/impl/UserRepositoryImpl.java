@@ -4,12 +4,15 @@ import com.example.test_CTM.dto.UserDto;
 import com.example.test_CTM.repository.UserRepository;
 import com.test_CTM.jooq.generated.tables.Tickets;
 import com.test_CTM.jooq.generated.tables.records.TicketsRecord;
+import com.test_CTM.jooq.generated.tables.records.UsersRecord;
 import lombok.RequiredArgsConstructor;
 import org.jooq.*;
 import org.jooq.Record;
+import org.jooq.exception.TooManyRowsException;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static com.test_CTM.jooq.generated.Tables.TICKETS;
@@ -51,5 +54,18 @@ public class UserRepositoryImpl implements UserRepository {
                 .join(USERS)
                 .on(TICKETS.USER_ID.eq(USERS.ID))
                 .fetchInto(TICKETS);
+    }
+
+    @Override
+    public UsersRecord getUserByLogin(String login) {
+        try {
+            return dsl
+                    .selectFrom(USERS)
+                    .where(USERS.LOGIN.eq(login))
+                    .fetchOne();
+        } catch (TooManyRowsException e) {
+            // log.info("Found more than one user with same login\n {}", e.getMessage());
+            throw new RuntimeException("Found more than one user with same login");
+        }
     }
 }

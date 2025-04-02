@@ -2,6 +2,7 @@ package com.example.test_CTM.repository;
 
 import com.example.test_CTM.dto.UserDto;
 import com.test_CTM.jooq.generated.tables.records.TicketsRecord;
+import com.test_CTM.jooq.generated.tables.records.UsersRecord;
 import org.jooq.Record;
 import org.jooq.Record1;
 import org.jooq.Result;
@@ -28,4 +29,6 @@ public interface UserRepository {
      * @return все купленные билеты юзера
      */
     Result<TicketsRecord> getUserTickets(String login);
+
+    UsersRecord getUserByLogin(String login);
 }

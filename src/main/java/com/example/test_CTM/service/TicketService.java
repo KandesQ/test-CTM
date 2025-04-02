@@ -8,9 +8,15 @@ import java.util.List;
 public interface TicketService {
 
     /**
-     * @return отфильтрованные, доступные к покупке билеты
-     *
-     * Пагинация - 20 штук
+     * @return отфильтрованные, доступные к покупке билеты с возможностью пагинации
      */
     List<TicketDto> getFilteredAvailableTickets(TicketFilterDto ticketFilterDto, int page, int pageSize);
+
+    /**
+     *
+     * @param login покупающий пользователь
+     * @param ticketDto информация о билете который надо купить
+     * @return Оповощение об успешной покупке
+     */
+    String buyTicket(String login, TicketDto ticketDto);
 }

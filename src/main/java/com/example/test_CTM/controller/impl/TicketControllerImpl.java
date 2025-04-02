@@ -4,6 +4,8 @@ import com.example.test_CTM.controller.TicketController;
 import com.example.test_CTM.dto.TicketDto;
 import com.example.test_CTM.dto.TicketFilterDto;
 import com.example.test_CTM.service.TicketService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
@@ -28,5 +30,14 @@ public class TicketControllerImpl implements TicketController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(ticketService.getFilteredAvailableTickets(ticketFilterDto, page, pageSize));
+    }
+
+    @Override
+    public ResponseEntity<String> buyTicket(
+            @NotBlank(message = "login must be specified") String login,
+            @Valid TicketDto ticketDto) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ticketService.buyTicket(login, ticketDto));
     }
 }
