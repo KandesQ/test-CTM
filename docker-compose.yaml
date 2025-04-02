@@ -1,0 +1,37 @@
+# в будущем добавить сам сервис
+
+networks:
+  shared_network:
+    driver: bridge
+
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: appdatabase
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    networks:
+      - shared_network
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appdatabase
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - shared_network
+    depends_on:
+      - postgres
+
+# Была проблема, связанная с тем, что таска тест поднимала контекст спринга, который требует запущенной
+#базы. Когда запускаю прогу через compose, то она сначала собирает все образы и потом их запускает.
+#Не работало из-за того что в сборке образа требовался другой уже запущенный контейнер
