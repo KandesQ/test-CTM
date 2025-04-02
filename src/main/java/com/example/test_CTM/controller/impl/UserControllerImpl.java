@@ -26,7 +26,7 @@ public class UserControllerImpl implements UserController {
                 .body(userService.registerUser(userDto));
     }
 
-    @GetMapping("/tickets")
+    @GetMapping("/bought_tickets")
     public ResponseEntity<List<TicketDto>> getBoughtTickets(@RequestBody UserDto userDto) {
         return ResponseEntity
                 .status(HttpStatus.OK)

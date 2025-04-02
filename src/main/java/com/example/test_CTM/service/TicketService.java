@@ -12,5 +12,5 @@ public interface TicketService {
      *
      * Пагинация - 20 штук
      */
-    List<TicketDto> getFilteredAvailableTickets(TicketFilterDto ticketFilterDto);
+    List<TicketDto> getFilteredAvailableTickets(TicketFilterDto ticketFilterDto, int page, int pageSize);
 }
