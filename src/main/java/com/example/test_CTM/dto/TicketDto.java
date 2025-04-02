@@ -1,6 +1,7 @@
 package com.example.test_CTM.dto;
 
 import com.test_CTM.jooq.generated.tables.records.TicketsRecord;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
