@@ -24,7 +24,6 @@ public class TicketServiceImpl implements TicketService {
     private final List<Filter> ticketFilters;
     private final TicketRepository ticketRepository;
     private final UserRepository userRepository;
-    private final ThreadPoolTaskExecutorBuilder threadPoolTaskExecutorBuilder;
 
 
     @Override
@@ -37,10 +36,6 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public String buyTicket(String login, TicketDto ticketDto) {
-        // проверка есть ли пользователь
-        // проверка есть ли билет
-        // проверка доступен ли билет
-        // привязка билета к пользователю
 
         if (!userRepository.existByLogin(login)) {
             throw new RuntimeException("User=" + login + " doesn't exist");
